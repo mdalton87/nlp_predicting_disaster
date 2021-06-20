@@ -45,8 +45,7 @@ def basic_clean(string):
         .decode('utf-8', 'ignore')
     # replace anything that is not a letter, number, whitespace or a single quote. 
     string = re.sub(r"[^a-z0-9'\s]", '', string)
-    # remove '\n' from string
-    string = string.replace('\n', '')
+
     
     return string
 
