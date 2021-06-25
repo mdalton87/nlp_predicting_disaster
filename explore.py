@@ -83,13 +83,14 @@ def proportion_graph(word_counts, group1, group2, n=20):
     
     var1 = str('p_' + group1)
     var2 = str('p_' + group2)
+
     (word_counts
-         .assign(var1 = word_counts[group1] / word_counts['all'],
-                 var2 = word_counts[group2] / word_counts['all'])
-         .sort_values(by='all')
-         [[var1 , var2]]
-         .tail(n)
-         .sort_values(var2)
-         .plot.barh(stacked=True))
+     .assign(var1 = word_counts[group1] / word_counts['all'],
+             var2 = word_counts[group2] / word_counts['all'])
+     .sort_values(by='all')
+     [[var1 , var2]]
+     .tail(n)
+     .sort_values(var2)
+     .plot.barh(stacked=True))
 
     plt.title(f'Proportion of {group1} vs {group2} for the {n} most common words')
