@@ -136,7 +136,7 @@ def lemmatize(string):
 
 
 
-def remove_stopwords(string, extra_words=None, exclude_words=None):
+def remove_stopwords(string, more_stopwords=None, less_stopwords=None):
     '''
     Description:
     -----------
@@ -157,37 +157,34 @@ def remove_stopwords(string, extra_words=None, exclude_words=None):
     # splits the string into a list of words
     words = string.split()
     
-    
     # if extra_words is set to None don't change anything
-    if extra_words == None:
+    if more_stopwords == None:
         stopword_list = stopword_list
     # if extra_words is a list, append the individual words in the list
-    elif type(extra_words) == list:
-        for word in extra_words:
+    elif type(more_stopwords) == list:
+        for word in more_stopwords:
             stopword_list.append(word)
     # if extra_words is a string, append the individual word
-    elif type(extra_words) == str:
-        stopword_list.append(extra_words)
+    elif type(more_stopwords) == str:
+        stopword_list.append(more_stopwords)
     # somethings wrong text
     else:
         print('extra_words should be a string or a list')
     
-    
     # if exclude_words is set to None don't change anything
-    if exclude_words == None:
+    if less_stopwords == None:
         stopword_list = stopword_list
     # if exclude_words is a list, append the individual words in the list
-    elif type(exclude_words) == list:
-        for word in exclude_words:
+    elif type(less_stopwords) == list:
+        for word in less_stopwords:
             stopword_list.remove(word)
     # if exclude_words is a string, append the individual word
-    elif type(extra_words) == str:
-        stopword_list.remove(exclude_words)
+    elif type(less_stopwords) == str:
+        stopword_list.remove(less_stopwords)
     # something's wrong text
     else:
         print('exclude_words should be a string or list')
 
-        
     # filters out stopwords from string
     filtered_words = [word for word in words if word not in stopword_list]
     # rejoins the string 
